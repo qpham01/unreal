@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "FPSCharacter.generated.h"
 
 UCLASS()
@@ -34,4 +36,19 @@ public:
 	UFUNCTION()
 	void MoveRight(float Value);
 
+	// Sets jump flag when key is pressed.
+	UFUNCTION()
+	void StartJump();
+
+	// Clears jump flag when key is released.
+	UFUNCTION()
+	void StopJump();
+
+	// FPS camera.
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* FPSCameraComponent;
+
+	// First-person mesh (arms), visible only to the owning player.
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+	USkeletalMeshComponent* FPSMesh;
 };
